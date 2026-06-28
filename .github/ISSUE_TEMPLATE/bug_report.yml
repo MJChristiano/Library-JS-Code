@@ -1,0 +1,42 @@
+name: Bug report
+description: Report something that is broken
+labels: [bug]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug and what you expected to happen.
+      placeholder: Tell us what broke.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Add exact steps so we can reproduce it.
+      placeholder: |
+        1. Go to ...
+        2. Click ...
+        3. See error ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: pages
+    attributes:
+      label: Affected page
+      options:
+        - index.html
+        - books.html
+        - Both
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or console errors
+      description: Paste screenshots or browser console output if available.

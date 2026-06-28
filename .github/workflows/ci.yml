@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate required project files exist
+        run: |
+          test -f index.html
+          test -f books.html
+          test -f style.css
+          test -f index.js
+          test -f books.js
+
+      - name: Fail on merge conflict markers
+        run: |
+          if grep -R -n -E "^(<<<<<<<|=======|>>>>>>>)" -- .; then
+            echo "Merge conflict markers found."
+            exit 1
+          fi
+
+      - name: Validate workspace JSON files
+        run: |
+          python - << 'PY'
+          import json
+          files = [".vscode/settings.json", ".vscode/extensions.json"]
+          for f in files:
+            with open(f, "r", encoding="utf-8") as fh:
+              json.load(fh)
+          print("JSON validation passed")
+          PY
+
+      - name: JavaScript syntax check
+        run: |
+          node --check index.js
+          node --check books.js
