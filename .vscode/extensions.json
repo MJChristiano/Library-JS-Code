@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ritwickdey.liveserver",
+    "eamodio.gitlens",
+    "usernamehw.errorlens",
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-rename-tag",
+    "pranaygp.vscode-css-peek",
+    "gruntfuggly.todo-tree",
+    "visualstudioexptteam.vscodeintellicode"
+  ]
+}
